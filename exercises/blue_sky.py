@@ -71,7 +71,6 @@ class BlueSky:
         pygame.display.flip()
 
 
-
 if __name__ == "__main__":
     bs = BlueSky()
     bs.run_game()
