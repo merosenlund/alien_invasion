@@ -14,6 +14,17 @@ class Jet:
 
         self.rect.midleft = self.screen_rect.midleft
 
+        # Movement flags
+        self.moving_up = False
+        self.moving_down = False
+
     def blitme(self):
         """Draw the jet to the screen."""
         self.screen.blit(self.image, self.rect)
+
+    def update(self):
+        """Update the jet's position on the screen."""
+        if self.moving_up and self.rect.top > self.screen_rect.top:
+            self.rect.y -= 4
+        if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
+            self.rect.y += 4
