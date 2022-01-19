@@ -2,6 +2,7 @@ import sys
 
 import pygame
 
+from settings import Settings
 from jet import Jet
 from h_bullet import HorizontalBullet
 
@@ -12,12 +13,14 @@ class HorizontalAlienInvasion:
     def __init__(self) -> None:
         """Initialize the game."""
         pygame.init()
+        self.settings = Settings()
 
-        self.screen = pygame.display.set_mode((500, 500))
+        self.screen = pygame.display.set_mode((
+            self.settings.screen_height, self.settings.screen_width))
         self.screen_rect = self.screen.get_rect()
-        pygame.display.set_caption("Blue Sky")
+        pygame.display.set_caption(self.settings.game_name)
 
-        self.bg_color = (173, 216, 230)
+        self.bg_color = self.settings.bg_color
 
         self.jet = Jet(self)
 

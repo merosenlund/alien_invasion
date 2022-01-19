@@ -9,4 +9,5 @@ class Halien(Sprite):
         super().__init__()
         self.screen = hai_game.screen
 
-        self.image = pygame.image.load()
+        self.image = pygame.image.load('images/alien.bmp')
+        self.rect = self.image.get_rect()

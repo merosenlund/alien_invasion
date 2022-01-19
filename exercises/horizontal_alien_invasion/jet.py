@@ -6,6 +6,7 @@ class Jet:
 
     def __init__(self, hai_game) -> None:
         """Initialize the jet."""
+        self.settings = hai_game.settings
         self.screen = hai_game.screen
         self.screen_rect = hai_game.screen.get_rect()
 
@@ -25,6 +26,6 @@ class Jet:
     def update(self):
         """Update the jet's position on the screen."""
         if self.moving_up and self.rect.top > self.screen_rect.top:
-            self.rect.y -= 4
+            self.rect.y -= self.settings.jet_speed
         if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
-            self.rect.y += 4
+            self.rect.y += self.settings.jet_speed
