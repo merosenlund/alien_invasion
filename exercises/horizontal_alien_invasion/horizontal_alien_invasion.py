@@ -1,14 +1,16 @@
 import sys
 
 import pygame
+from pygame import time
 
 from settings import Settings
 from jet import Jet
+from haliens import Halien
 from h_bullet import HorizontalBullet
 
 
 class HorizontalAlienInvasion:
-    """A pygame window with a blue background."""
+    """It's alien invasion but horizontal!"""
 
     def __init__(self) -> None:
         """Initialize the game."""
@@ -16,7 +18,7 @@ class HorizontalAlienInvasion:
         self.settings = Settings()
 
         self.screen = pygame.display.set_mode((
-            self.settings.screen_height, self.settings.screen_width))
+            self.settings.screen_width, self.settings.screen_height))
         self.screen_rect = self.screen.get_rect()
         pygame.display.set_caption(self.settings.game_name)
 
@@ -26,7 +28,8 @@ class HorizontalAlienInvasion:
 
         self.bullets = pygame.sprite.Group()
 
-        self.aliens = pygame.sprite.Group()
+        self.haliens = pygame.sprite.Group()
+        self.haliens.add(Halien(self))
 
     def run_game(self):
         """Run the game loop."""
@@ -34,7 +37,8 @@ class HorizontalAlienInvasion:
             self._check_events()
             self.jet.update()
             self._update_bullets()
-            self._draw_screen()
+            self._update_haliens()
+            self._update_screen()
 
     def _check_events(self):
         """Check the events that occurred."""
@@ -69,12 +73,27 @@ class HorizontalAlienInvasion:
             if bullet.rect.left > self.screen_rect.right:
                 self.bullets.remove(bullet)
 
-    def _draw_screen(self):
-        """Redraw the game screen."""
-        self.screen.fill(self.bg_color)
+    def _update_haliens(self):
+        """Udate the haliens and add more if the time is right"""
+        if time.get_ticks() % self.settings.halien_add_speed == 0:
+            # breakpoint()
+            print(time.get_ticks() % self.settings.halien_add_speed)
+            self._add_halien()
+        self.haliens.update()
+
+    def _add_halien(self):
+        """Add a halien to the game."""
+        new_halien = Halien(self)
+        self.haliens.add(new_halien)
+
+    def _update_screen(self):
+        """Update the images on the screen, and flip to the new screen."""
+        self.screen.fill(self.settings.bg_color)
         self.jet.blitme()
         for bullet in self.bullets:
             bullet.draw_bullet()
+        self.haliens.draw(self.screen)
+
         pygame.display.flip()
 
 
