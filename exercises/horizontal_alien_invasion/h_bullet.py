@@ -5,14 +5,14 @@ from pygame.sprite import Sprite
 class HorizontalBullet(Sprite):
     """A class to manage bullets fired from the ship."""
 
-    def __init__(self, ai_game) -> None:
+    def __init__(self, hai_game) -> None:
         super().__init__()
-        self.screen = ai_game.screen
+        self.screen = hai_game.screen
         self.color = (60, 60, 60)
 
         # Create a bullet rect at (0, 0) and then set correct position.
         self.rect = pygame.Rect(0, 0, 15, 3)
-        self.rect.midtop = ai_game.jet.rect.midright
+        self.rect.midtop = hai_game.jet.rect.midright
 
         # Store the bullet's position as a decimal value
         self.x = float(self.rect.x)

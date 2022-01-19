@@ -6,7 +6,7 @@ from jet import Jet
 from h_bullet import HorizontalBullet
 
 
-class BlueSky:
+class HorizontalAlienInvasion:
     """A pygame window with a blue background."""
 
     def __init__(self) -> None:
@@ -76,5 +76,5 @@ class BlueSky:
 
 
 if __name__ == "__main__":
-    bs = BlueSky()
-    bs.run_game()
+    hai = HorizontalAlienInvasion()
+    hai.run_game()
