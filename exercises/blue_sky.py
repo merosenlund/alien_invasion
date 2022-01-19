@@ -23,6 +23,8 @@ class BlueSky:
 
         self.bullets = pygame.sprite.Group()
 
+        self.aliens = pygame.sprite.Group()
+
     def run_game(self):
         """Run the game loop."""
         while True:
@@ -43,6 +45,8 @@ class BlueSky:
                     self.jet.moving_down = True
                 elif event.key == pygame.K_SPACE:
                     self._fire_bullet()
+                elif event.key == pygame.K_q:
+                    sys.exit()
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_UP:
                     self.jet.moving_up = False
