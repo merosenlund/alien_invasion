@@ -75,11 +75,11 @@ class HorizontalAlienInvasion:
 
     def _update_haliens(self):
         """Udate the haliens and add more if the time is right"""
+        self.haliens.update()
         if time.get_ticks() % self.settings.halien_add_speed == 0:
             # breakpoint()
             print(time.get_ticks() % self.settings.halien_add_speed)
             self._add_halien()
-        self.haliens.update()
 
     def _add_halien(self):
         """Add a halien to the game."""
