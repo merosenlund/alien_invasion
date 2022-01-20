@@ -13,14 +13,14 @@ class Halien(Sprite):
         self.screen = hai_game.screen
         self.screen_rect = hai_game.screen_rect
 
-        self.image = pygame.image.load('images/alien.bmp')
+        self.image = pygame.image.load("images/alien.bmp")
         self.rect = self.image.get_rect()
         half_height = self.rect.height // 2
 
         # Randomize where on the right the halien appears.
         random_spot = randint(
-            self.screen_rect.top + half_height,
-            self.screen_rect.bottom - half_height)
+            self.screen_rect.top + half_height, self.screen_rect.bottom - half_height
+        )
         self.rect.x = random_spot
         self.rect.y = self.screen_rect.right
 

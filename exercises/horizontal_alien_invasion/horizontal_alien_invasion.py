@@ -17,8 +17,9 @@ class HorizontalAlienInvasion:
         pygame.init()
         self.settings = Settings()
 
-        self.screen = pygame.display.set_mode((
-            self.settings.screen_width, self.settings.screen_height))
+        self.screen = pygame.display.set_mode(
+            (self.settings.screen_width, self.settings.screen_height)
+        )
         self.screen_rect = self.screen.get_rect()
         pygame.display.set_caption(self.settings.game_name)
 
